@@ -1,7 +1,9 @@
 package lernapp.ui;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 import javax.swing.JFrame;
 import lernapp.data.QuestionBank;
 import lernapp.model.Question;
@@ -21,6 +23,7 @@ public class AppWindow extends JFrame {
     private final java.awt.Container cardContainer;
     private final QuestionBank questionBank;
     private final ProgressTracker progressTracker;
+    private final List<Question> allQuestions;
 
     private FlashcardPanel flashcardPanel;
     private QuizPanel quizPanel;
@@ -31,11 +34,11 @@ public class AppWindow extends JFrame {
 
         this.questionBank = new QuestionBank();
         this.progressTracker = new ProgressTracker();
+        this.allQuestions = questionBank.getAllQuestions();
         this.cardLayout = new CardLayout();
         this.cardContainer = getContentPane();
         cardContainer.setLayout(cardLayout);
 
-        List<Question> allQuestions = questionBank.getAllQuestions();
         this.flashcardPanel = new FlashcardPanel(this, allQuestions, progressTracker);
         this.quizPanel = new QuizPanel(this, allQuestions, progressTracker);
         this.progressPanel = new ProgressPanel(this, allQuestions, progressTracker);
@@ -69,8 +72,30 @@ public class AppWindow extends JFrame {
         cardLayout.show(cardContainer, CARD_QUIZ);
     }
 
+    public void showQuizFiltered(List<Question> subset) {
+        quizPanel.startQuiz(subset);
+        cardLayout.show(cardContainer, CARD_QUIZ);
+    }
+
     public void showProgress() {
         progressPanel.refresh();
         cardLayout.show(cardContainer, CARD_PROGRESS);
+    }
+
+    // Liefert alle vorkommenden Themen (z.B. "Schleifen", "OOP"), alphabetisch
+    // sortiert und ohne Duplikate - fuer den Themen-Filter im Hauptmenue.
+    public List<String> getAvailableTopics() {
+        return new ArrayList<>(new TreeSet<>(allQuestions.stream().map(Question::getTopic).toList()));
+    }
+
+    // Liefert alle Fragen zu einem bestimmten Thema.
+    public List<Question> getQuestionsByTopic(String topic) {
+        List<Question> result = new ArrayList<>();
+        for (Question question : allQuestions) {
+            if (question.getTopic().equals(topic)) {
+                result.add(question);
+            }
+        }
+        return result;
     }
 }

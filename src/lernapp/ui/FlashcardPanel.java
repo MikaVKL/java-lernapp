@@ -76,6 +76,7 @@ public class FlashcardPanel extends JPanel {
 
         JButton knewButton = new JButton("Wusste ich");
         JButton didNotKnowButton = new JButton("Wusste ich nicht");
+        JButton searchButton = new JButton("Mehr zum Thema suchen");
         knewButton.addActionListener(e -> {
             knownCount++;
             progressTracker.recordResult(q, true);
@@ -85,7 +86,8 @@ public class FlashcardPanel extends JPanel {
             progressTracker.recordResult(q, false);
             nextCard();
         });
-        setActionArea(knewButton, didNotKnowButton);
+        searchButton.addActionListener(e -> WebLinks.searchTopic(q.getTopic()));
+        setActionArea(knewButton, didNotKnowButton, searchButton);
     }
 
     private void nextCard() {

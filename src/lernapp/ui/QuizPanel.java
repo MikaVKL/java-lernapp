@@ -18,8 +18,9 @@ import lernapp.progress.ProgressTracker;
 // Feedback inkl. Erklaerung, laufender Punktestand, Abschluss-Screen.
 public class QuizPanel extends JPanel {
 
-    private final List<Question> questions;
+    private final List<Question> fullDeck; // alle Fragen, fuer den normalen Modus
     private final ProgressTracker progressTracker;
+    private List<Question> questions; // aktuell aktive Fragen (kann eine gefilterte Auswahl sein)
 
     private int currentIndex;
     private int correctCount;
@@ -31,7 +32,8 @@ public class QuizPanel extends JPanel {
     private final JPanel actionArea;
 
     public QuizPanel(AppWindow appWindow, List<Question> allQuestions, ProgressTracker progressTracker) {
-        this.questions = new ArrayList<>(allQuestions);
+        this.fullDeck = new ArrayList<>(allQuestions);
+        this.questions = fullDeck;
         this.progressTracker = progressTracker;
 
         setLayout(new BorderLayout(10, 10));
@@ -64,9 +66,15 @@ public class QuizPanel extends JPanel {
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    // Startet das Quiz neu: Fragen mischen, Punktestand zuruecksetzen.
-    // Wird aufgerufen, sobald der Nutzer in diesen Modus wechselt.
+    // Startet das Quiz mit allen Fragen neu.
     public void startQuiz() {
+        startQuiz(fullDeck);
+    }
+
+    // Startet das Quiz nur mit den uebergebenen Fragen, z.B. fuer einen
+    // Themen-Filter oder gezieltes Ueben einzelner Kategorien.
+    public void startQuiz(List<Question> subset) {
+        questions = new ArrayList<>(subset);
         Collections.shuffle(questions);
         currentIndex = 0;
         correctCount = 0;
@@ -118,8 +126,11 @@ public class QuizPanel extends JPanel {
         boolean isLastQuestion = currentIndex + 1 >= questions.size();
         JButton nextButton = new JButton(isLastQuestion ? "Ergebnis anzeigen" : "Weiter");
         nextButton.addActionListener(e -> nextQuestion());
+        JButton searchButton = new JButton("Mehr zum Thema suchen");
+        searchButton.addActionListener(e -> WebLinks.searchTopic(q.getTopic()));
         actionArea.removeAll();
         actionArea.add(nextButton);
+        actionArea.add(searchButton);
         actionArea.revalidate();
         actionArea.repaint();
     }
