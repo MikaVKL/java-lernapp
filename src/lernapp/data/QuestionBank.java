@@ -426,6 +426,199 @@ public class QuestionBank {
                 "Scanner (aus java.util) liest z.B. mit nextInt() oder nextLine() Eingaben von der Konsole ein.",
                 new String[] { "Reader", "InputBox", "Keyboard" }));
 
+        // --- Weitere Fragen: Variablen ---
+        questions.add(new Question("Variablen",
+                "Wie nennt man es, wenn ein int-Wert automatisch (ohne Cast) in einen double umgewandelt wird?",
+                "Implizite Typumwandlung (Widening)",
+                "Von einem kleineren zu einem groesseren Datentyp wandelt Java automatisch um, ohne dass man selbst casten muss.",
+                new String[] { "Explizite Typumwandlung", "Autoboxing", "Downcasting" }));
+
+        questions.add(new Question("Variablen",
+                "Welchen ungefaehren Wertebereich deckt der Datentyp int in Java ab?",
+                "-2,1 bis +2,1 Milliarden",
+                "int belegt 32 Bit, dadurch ergibt sich dieser feste, recht grosse Wertebereich.",
+                new String[] { "0 bis 255", "-128 bis 127", "unbegrenzt" }));
+
+        questions.add(new Question("Variablen",
+                "Wie nennt man eine Variable, die innerhalb einer Methode deklariert wird?",
+                "Lokale Variable",
+                "Lokale Variablen existieren nur waehrend die Methode laeuft und sind ausserhalb nicht sichtbar.",
+                new String[] { "Attribut", "Parameter", "Globale Variable" }));
+
+        // --- Weitere Fragen: Operatoren ---
+        questions.add(new Question("Operatoren",
+                "Was berechnet der Ausdruck 10 / 3, wenn beide Operanden vom Typ int sind?",
+                "3",
+                "Bei einer Ganzzahl-Division wird der Nachkommateil abgeschnitten - das Ergebnis bleibt ein int.",
+                new String[] { "3.33", "1", "0" }));
+
+        questions.add(new Question("Operatoren",
+                "Welcher Operator weist einer Variable einen Wert zu UND addiert gleichzeitig dazu, z.B. zahl += 5?",
+                "+=",
+                "zahl += 5 ist eine Kurzschreibweise fuer zahl = zahl + 5.",
+                new String[] { "=+", "++", "->" }));
+
+        questions.add(new Question("Operatoren",
+                "Was ist das Ergebnis von true && false?",
+                "false",
+                "Bei && (logisches UND) reicht schon eine falsche Seite, damit das Gesamtergebnis false ist.",
+                new String[] { "true", "Fehler", "0" }));
+
+        // --- Weitere Fragen: Bedingungen ---
+        questions.add(new Question("Bedingungen",
+                "Was passiert bei einem switch, wenn kein passender case gefunden wird und kein default vorhanden ist?",
+                "Nichts, der switch-Block wird einfach uebersprungen",
+                "Ohne passenden case und ohne default macht das Programm einfach nach dem switch-Block weiter.",
+                new String[] { "Programmabsturz", "Der erste case wird ausgefuehrt", "Kompilierfehler" }));
+
+        questions.add(new Question("Bedingungen",
+                "Welches Schluesselwort im switch faengt alle nicht extra behandelten Faelle ab?",
+                "default",
+                "default ist optional und wirkt wie ein 'sonst alle anderen Faelle' am Ende des switch-Blocks.",
+                new String[] { "else", "otherwise", "any" }));
+
+        // --- Weitere Fragen: Schleifen ---
+        questions.add(new Question("Schleifen",
+                "Wie oft laeuft folgende Schleife: for (int i = 0; i < 0; i++) { ... }?",
+                "0 mal",
+                "Die Bedingung i < 0 ist mit i = 0 sofort falsch, daher wird der Schleifenrumpf kein einziges Mal ausgefuehrt.",
+                new String[] { "1 mal", "unendlich oft", "Fehler beim Kompilieren" }));
+
+        questions.add(new Question("Schleifen",
+                "Was passiert bei while (true) { ... break; ... }?",
+                "Die Schleife laeuft, bis break erreicht wird",
+                "while(true) allein waere eine Endlosschleife, aber das break im Rumpf beendet sie gezielt an dieser Stelle.",
+                new String[] { "Kompilierfehler, da true kein gueltiger Ausdruck ist", "Die Schleife laeuft nie", "break wird ignoriert" }));
+
+        // --- Weitere Fragen: Arrays ---
+        questions.add(new Question("Arrays",
+                "Was passiert bei zahlen[zahlen.length], wenn zahlen 5 Elemente hat?",
+                "Ein ArrayIndexOutOfBoundsException-Fehler",
+                "Gueltige Indizes gehen nur bis length - 1. Der Index 'length' selbst liegt bereits ausserhalb des Arrays.",
+                new String[] { "Gibt das letzte Element zurueck", "Gibt 0 zurueck", "Gibt null zurueck" }));
+
+        questions.add(new Question("Arrays",
+                "Kann ein Java-Array nach der Erstellung seine Groesse aendern?",
+                "Nein, die Groesse ist fest",
+                "Ein Array hat eine feste Laenge. Wer eine veraenderliche Groesse braucht, nutzt stattdessen z.B. eine ArrayList.",
+                new String[] { "Ja, mit resize()", "Ja, automatisch bei Bedarf", "Nur bei int-Arrays" }));
+
+        // --- Weitere Fragen: Methoden ---
+        questions.add(new Question("Methoden",
+                "Wie nennt man eine Methode, die keine Parameter entgegennimmt?",
+                "Parameterlose Methode",
+                "Eine Methode kann null, einen oder mehrere Parameter haben - ganz ohne ist ebenfalls erlaubt.",
+                new String[] { "Void-Methode", "Leere Methode", "Statische Methode" }));
+
+        questions.add(new Question("Methoden",
+                "Was passiert, wenn eine Methode mit Rueckgabetyp int keinen return-Wert liefert?",
+                "Kompilierfehler",
+                "Java verlangt, dass jeder moegliche Codepfad einer nicht-void-Methode einen Wert zurueckgibt.",
+                new String[] { "Sie gibt automatisch 0 zurueck", "Sie gibt null zurueck", "Laufzeitfehler erst beim Aufruf" }));
+
+        // --- Weitere Fragen: OOP ---
+        questions.add(new Question("OOP",
+                "Wie nennt man es, wenn mehrere Klassen dieselbe Methode jeweils unterschiedlich umsetzen (z.B. durch Overriding)?",
+                "Polymorphismus",
+                "Polymorphismus erlaubt es, dieselbe Methode je nach tatsaechlichem Objekt-Typ unterschiedlich reagieren zu lassen.",
+                new String[] { "Kapselung", "Abstraktion", "Vererbung" }));
+
+        questions.add(new Question("OOP",
+                "Wie nennt man das Verstecken interner Daten einer Klasse hinter privaten Feldern und oeffentlichen Methoden?",
+                "Kapselung (Encapsulation)",
+                "Kapselung schuetzt den internen Zustand eines Objekts vor direktem, unkontrolliertem Zugriff von aussen.",
+                new String[] { "Vererbung", "Polymorphismus", "Abstraktion" }));
+
+        questions.add(new Question("OOP",
+                "Welche Methode ruft man typischerweise auf, um ein Objekt als lesbaren Text darzustellen (wird z.B. von println genutzt)?",
+                "toString()",
+                "Ueberschreibt man toString() in einer eigenen Klasse, zeigt println() automatisch eine sinnvolle Textdarstellung statt einer kryptischen Adresse.",
+                new String[] { "print()", "asString()", "display()" }));
+
+        // --- Enums ---
+        questions.add(new Question("Enums",
+                "Wofuer nutzt man in Java ein enum?",
+                "Um eine feste Menge benannter Konstanten zu definieren, z.B. Wochentage",
+                "enum eignet sich perfekt fuer Werte, die von vornherein feststehen, wie Wochentage oder Himmelsrichtungen.",
+                new String[] { "Um Arrays zu speichern", "Um Methoden zu ueberladen", "Um Fehler abzufangen" }));
+
+        questions.add(new Question("Enums",
+                "Wie deklariert man ein einfaches enum mit den Werten MONTAG, DIENSTAG, MITTWOCH?",
+                "enum Wochentag { MONTAG, DIENSTAG, MITTWOCH }",
+                "Die Konstanten stehen kommagetrennt in geschweiften Klammern direkt nach dem enum-Namen.",
+                new String[] { "enum Wochentag = [MONTAG, DIENSTAG, MITTWOCH];", "class Wochentag enum { ... }", "enum Wochentag(MONTAG, DIENSTAG, MITTWOCH);" }));
+
+        questions.add(new Question("Enums",
+                "Welche Schreibweise ist bei enum-Konstanten in Java ueblich, z.B. MONTAG?",
+                "GROSSBUCHSTABEN",
+                "Analog zu Konstanten (final-Variablen) schreibt man enum-Werte per Konvention komplett gross.",
+                new String[] { "camelCase", "PascalCase", "kebab-case" }));
+
+        // --- Interfaces ---
+        questions.add(new Question("Interfaces",
+                "Was ist ein Interface in Java?",
+                "Ein Vertrag, der Methoden vorschreibt, die implementierende Klassen bereitstellen muessen",
+                "Ein Interface legt fest WAS eine Klasse koennen muss, ohne selbst festzulegen WIE es umgesetzt wird.",
+                new String[] { "Eine spezielle Art von Array", "Eine fertige Klasse zum direkten Verwenden", "Ein Kommentar-Format" }));
+
+        questions.add(new Question("Interfaces",
+                "Welches Schluesselwort nutzt eine Klasse, um ein Interface umzusetzen?",
+                "implements",
+                "Klasse X implements InterfaceY bedeutet: X verspricht, alle Methoden von InterfaceY bereitzustellen.",
+                new String[] { "extends", "uses", "interfaces" }));
+
+        questions.add(new Question("Interfaces",
+                "Kann man von einem Interface direkt mit new ein Objekt erstellen?",
+                "Nein, nur Klassen koennen instanziiert werden",
+                "Ein Interface allein ist keine fertige Blaupause fuer Objekte - nur eine Klasse, die es implementiert, kann instanziiert werden.",
+                new String[] { "Ja, genau wie bei Klassen", "Nur wenn es eine einzige Methode hat", "Ja, aber nur mit static" }));
+
+        // --- Weitere Fragen: Strings ---
+        questions.add(new Question("Strings",
+                "Was macht text.trim() bei einem String?",
+                "Entfernt Leerzeichen am Anfang und Ende",
+                "trim() liefert eine neue Version des Strings ohne fuehrende/nachfolgende Leerzeichen, der Rest bleibt unveraendert.",
+                new String[] { "Entfernt alle Leerzeichen im Text", "Kuerzt den Text auf eine feste Laenge", "Wandelt Gross- in Kleinbuchstaben um" }));
+
+        questions.add(new Question("Strings",
+                "Wie prueft man, ob ein String namens text leer ist (Laenge 0)?",
+                "text.isEmpty()",
+                "isEmpty() ist die uebliche, lesbare Methode dafuer - alternativ ginge auch text.length() == 0.",
+                new String[] { "text.isNull()", "text == \"\"", "text.length = 0" }));
+
+        // --- Weitere Fragen: Exceptions ---
+        questions.add(new Question("Exceptions",
+                "Welcher Block wird immer ausgefuehrt, egal ob eine Exception aufgetreten ist oder nicht?",
+                "finally",
+                "finally eignet sich z.B. zum Aufraeumen (Dateien schliessen), weil es garantiert ausgefuehrt wird.",
+                new String[] { "catch", "throw", "always" }));
+
+        questions.add(new Question("Exceptions",
+                "Mit welchem Schluesselwort loest man selbst eine Exception aus?",
+                "throw",
+                "throw new IllegalArgumentException(...) erzeugt und wirft gezielt eine eigene Exception.",
+                new String[] { "catch", "raise", "error" }));
+
+        // --- Weitere Fragen: Collections ---
+        questions.add(new Question("Collections",
+                "Wie entfernt man das Element an Index 0 aus einer ArrayList namens liste?",
+                "liste.remove(0)",
+                "remove(index) loescht das Element an dieser Position und rueckt die folgenden Elemente automatisch nach.",
+                new String[] { "liste.delete(0)", "liste.pop(0)", "liste[0] = null" }));
+
+        questions.add(new Question("Collections",
+                "Wie ermittelt man, wie viele Elemente eine ArrayList namens liste enthaelt?",
+                "liste.size()",
+                "size() ist bei ArrayList das Gegenstueck zu length bei Arrays - allerdings als Methode mit Klammern.",
+                new String[] { "liste.length", "liste.length()", "liste.count()" }));
+
+        // --- Weitere Fragen: Ein-/Ausgabe ---
+        questions.add(new Question("Ein-/Ausgabe",
+                "Welche Methode einer Scanner-Instanz liest eine ganze Zeile Text ein?",
+                "nextLine()",
+                "nextLine() liest bis zum naechsten Zeilenumbruch, waehrend next() nur bis zum naechsten Leerzeichen liest.",
+                new String[] { "nextInt()", "readLine()", "next()" }));
+
         return questions;
     }
 }
