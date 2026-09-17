@@ -9,12 +9,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import lernapp.model.Question;
+import lernapp.progress.ProgressTracker;
 
 // Der Karteikarten-Modus: Frage zeigen -> Antwort zeigen -> selbst bewerten
 // (wusste ich / wusste ich nicht) -> naechste Karte -> Zusammenfassung.
 public class FlashcardPanel extends JPanel {
 
-    private final List<Question> questions;
+    private final List<Question> fullDeck; // alle Fragen, fuer den normalen Modus
+    private final ProgressTracker progressTracker;
+    private List<Question> questions; // aktuell aktiver Stapel (kann eine gefilterte Auswahl sein)
 
     private int currentIndex;
     private int knownCount;
@@ -22,8 +25,10 @@ public class FlashcardPanel extends JPanel {
     private final JLabel questionLabel;
     private final JPanel actionArea; // wechselnder Bereich unten (Buttons je nach Zustand)
 
-    public FlashcardPanel(AppWindow appWindow, List<Question> allQuestions) {
-        this.questions = new ArrayList<>(allQuestions);
+    public FlashcardPanel(AppWindow appWindow, List<Question> allQuestions, ProgressTracker progressTracker) {
+        this.fullDeck = new ArrayList<>(allQuestions);
+        this.progressTracker = progressTracker;
+        this.questions = fullDeck;
 
         setLayout(new BorderLayout(10, 10));
 
@@ -39,9 +44,15 @@ public class FlashcardPanel extends JPanel {
         add(actionArea, BorderLayout.SOUTH);
     }
 
-    // Startet den Kartenstapel neu: Fragen mischen, Zaehler zuruecksetzen.
-    // Wird aufgerufen, sobald der Nutzer in diesen Modus wechselt.
+    // Startet den vollen Kartenstapel neu (normaler Karteikarten-Modus).
     public void startDeck() {
+        startDeck(fullDeck);
+    }
+
+    // Startet einen Kartenstapel nur mit den uebergebenen Fragen, z.B. fuer
+    // gezieltes Ueben einzelner Kategorien aus dem Fortschritts-Screen.
+    public void startDeck(List<Question> subset) {
+        questions = new ArrayList<>(subset);
         Collections.shuffle(questions);
         currentIndex = 0;
         knownCount = 0;
@@ -67,9 +78,13 @@ public class FlashcardPanel extends JPanel {
         JButton didNotKnowButton = new JButton("Wusste ich nicht");
         knewButton.addActionListener(e -> {
             knownCount++;
+            progressTracker.recordResult(q, true);
             nextCard();
         });
-        didNotKnowButton.addActionListener(e -> nextCard());
+        didNotKnowButton.addActionListener(e -> {
+            progressTracker.recordResult(q, false);
+            nextCard();
+        });
         setActionArea(knewButton, didNotKnowButton);
     }
 

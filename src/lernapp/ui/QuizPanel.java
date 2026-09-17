@@ -12,12 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import lernapp.model.Question;
+import lernapp.progress.ProgressTracker;
 
 // Der Quiz-Modus: Frage mit 4 Antwort-Buttons (gemischt), sofortiges
 // Feedback inkl. Erklaerung, laufender Punktestand, Abschluss-Screen.
 public class QuizPanel extends JPanel {
 
     private final List<Question> questions;
+    private final ProgressTracker progressTracker;
 
     private int currentIndex;
     private int correctCount;
@@ -28,8 +30,9 @@ public class QuizPanel extends JPanel {
     private final JPanel answersPanel;
     private final JPanel actionArea;
 
-    public QuizPanel(AppWindow appWindow, List<Question> allQuestions) {
+    public QuizPanel(AppWindow appWindow, List<Question> allQuestions, ProgressTracker progressTracker) {
         this.questions = new ArrayList<>(allQuestions);
+        this.progressTracker = progressTracker;
 
         setLayout(new BorderLayout(10, 10));
 
@@ -102,6 +105,7 @@ public class QuizPanel extends JPanel {
         }
 
         boolean isCorrect = selected.equals(q.getCorrectAnswer());
+        progressTracker.recordResult(q, isCorrect);
         if (isCorrect) {
             correctCount++;
             feedbackLabel.setText(htmlCenter("<b>Richtig!</b><br>" + q.getExplanation()));

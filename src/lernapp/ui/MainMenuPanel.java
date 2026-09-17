@@ -10,23 +10,26 @@ import javax.swing.SwingConstants;
 public class MainMenuPanel extends JPanel {
 
     public MainMenuPanel(AppWindow appWindow) {
-        setLayout(new GridLayout(4, 1, 10, 10));
+        setLayout(new GridLayout(5, 1, 10, 10));
 
         JLabel title = new JLabel("Java-Lernapp", SwingConstants.CENTER);
         title.setFont(title.getFont().deriveFont(28f));
 
         JButton flashcardsButton = new JButton("Karteikarten");
         JButton quizButton = new JButton("Quiz");
+        JButton progressButton = new JButton("Fortschritt");
         JButton exitButton = new JButton("Beenden");
 
         // ActionListener: der Code, der ausgeführt wird, sobald der Button geklickt wird.
         flashcardsButton.addActionListener(e -> appWindow.showFlashcards());
         quizButton.addActionListener(e -> appWindow.showQuiz());
+        progressButton.addActionListener(e -> appWindow.showProgress());
         exitButton.addActionListener(e -> System.exit(0));
 
         add(title);
         add(flashcardsButton);
         add(quizButton);
+        add(progressButton);
         add(exitButton);
     }
 }
