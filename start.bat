@@ -1,11 +1,16 @@
 @echo off
 setlocal
 
-rem Falls javac/java nicht im PATH sind, das JDK von BlueJ dazu haengen.
-set "JDK_BIN=C:\Program Files\BlueJ\jdk\bin"
-set "PATH=%JDK_BIN%;%PATH%"
-
 cd /d "%~dp0"
+
+where javac >nul 2>nul
+if errorlevel 1 (
+    echo Kein Java JDK gefunden ^(javac fehlt im PATH^).
+    echo Bitte ein JDK installieren, z.B. von https://adoptium.net
+    echo Beim Installieren "Add to PATH" auswaehlen.
+    pause
+    exit /b 1
+)
 
 echo Kompiliere Java-Lernapp...
 dir /s /b src\*.java > sources.txt

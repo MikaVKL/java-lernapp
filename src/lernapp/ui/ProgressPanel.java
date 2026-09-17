@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import lernapp.model.Question;
@@ -51,7 +52,23 @@ public class ProgressPanel extends JPanel {
             List<Question> wrongQuestions = progressTracker.questionsInCategory(allQuestions, Category.ZULETZT_FALSCH);
             appWindow.showFlashcardsFiltered(wrongQuestions);
         });
-        add(practiceWrongButton, BorderLayout.SOUTH);
+
+        JButton resetButton = new RoundedButton("Fortschritt zurücksetzen");
+        resetButton.addActionListener(e -> {
+            int choice = JOptionPane.showConfirmDialog(this,
+                    "Wirklich den gesamten Lernfortschritt löschen?",
+                    "Fortschritt zurücksetzen",
+                    JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                progressTracker.reset();
+                refresh();
+            }
+        });
+
+        JPanel southPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        southPanel.add(practiceWrongButton);
+        southPanel.add(resetButton);
+        add(southPanel, BorderLayout.SOUTH);
     }
 
     // Aktualisiert die Anzeige. Wird von AppWindow aufgerufen, bevor dieser

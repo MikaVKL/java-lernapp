@@ -72,6 +72,12 @@ public class ProgressTracker {
         return counts;
     }
 
+    // Loescht den gesamten Fortschritt, im Speicher und in der Datei.
+    public void reset() {
+        entries.clear();
+        save();
+    }
+
     public List<Question> questionsInCategory(List<Question> allQuestions, Category category) {
         List<Question> result = new ArrayList<>();
         for (Question question : allQuestions) {

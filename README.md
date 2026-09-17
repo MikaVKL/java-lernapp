@@ -2,21 +2,19 @@
 
 Eine kleine Swing-App zum Lernen von Java-Grundlagen für die Schule – mit Karteikarten- und Quiz-Modus.
 
+## Voraussetzung
+
+Ein installiertes Java JDK (Version 17 oder neuer), z.B. [Eclipse Temurin](https://adoptium.net) – beim Installieren "Add to PATH" auswählen.
+
 ## Starten
 
-Am einfachsten: Doppelklick auf `start.bat` im Projektordner. Das Skript kompiliert den Code und startet die App.
+Am einfachsten: Doppelklick auf `start.bat` im Projektordner. Das Skript kompiliert den Code und startet die App. Falls kein JDK gefunden wird, zeigt es einen Hinweis mit Installationslink.
 
 ## Manuell starten (PowerShell)
 
 ```powershell
 javac -d bin (Get-ChildItem -Path src -Recurse -Filter *.java | Select-Object -ExpandProperty FullName)
 java -cp bin lernapp.Main
-```
-
-Falls `javac`/`java` nicht gefunden werden, liegt das BlueJ-JDK unter `C:\Program Files\BlueJ\jdk\bin` – diesen Pfad vorher zum PATH hinzufügen:
-
-```powershell
-$env:Path = "C:\Program Files\BlueJ\jdk\bin;" + $env:Path
 ```
 
 ## Eigene Fragen ergänzen
