@@ -32,7 +32,7 @@ public class FlashcardPanel extends JPanel {
 
         setLayout(new BorderLayout(10, 10));
 
-        JButton backButton = new JButton("Zurück zum Menü");
+        JButton backButton = new RoundedButton("Zurück zum Menü");
         backButton.addActionListener(e -> appWindow.showMenu());
         add(backButton, BorderLayout.NORTH);
 
@@ -63,7 +63,7 @@ public class FlashcardPanel extends JPanel {
         Question q = questions.get(currentIndex);
         questionLabel.setText(htmlCenter(q.getQuestionText()));
 
-        JButton showAnswerButton = new JButton("Antwort zeigen");
+        JButton showAnswerButton = new RoundedButton("Antwort zeigen");
         showAnswerButton.addActionListener(e -> showAnswer());
         setActionArea(showAnswerButton);
     }
@@ -74,9 +74,9 @@ public class FlashcardPanel extends JPanel {
                 + "<br><br><b>Antwort:</b> " + q.getCorrectAnswer()
                 + "<br><br><i>" + q.getExplanation() + "</i>"));
 
-        JButton knewButton = new JButton("Wusste ich");
-        JButton didNotKnowButton = new JButton("Wusste ich nicht");
-        JButton searchButton = new JButton("Mehr zum Thema suchen");
+        JButton knewButton = new RoundedButton("Wusste ich");
+        JButton didNotKnowButton = new RoundedButton("Wusste ich nicht");
+        JButton searchButton = new RoundedButton("Mehr zum Thema suchen");
         knewButton.addActionListener(e -> {
             knownCount++;
             progressTracker.recordResult(q, true);
@@ -102,7 +102,7 @@ public class FlashcardPanel extends JPanel {
     private void showSummary() {
         questionLabel.setText(htmlCenter("Ergebnis: " + knownCount + " von " + questions.size() + " gewusst"));
 
-        JButton restartButton = new JButton("Nochmal");
+        JButton restartButton = new RoundedButton("Nochmal");
         restartButton.addActionListener(e -> startDeck());
         setActionArea(restartButton);
     }

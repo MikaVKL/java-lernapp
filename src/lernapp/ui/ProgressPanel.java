@@ -31,7 +31,7 @@ public class ProgressPanel extends JPanel {
 
         setLayout(new BorderLayout(10, 10));
 
-        JButton backButton = new JButton("Zurück zum Menü");
+        JButton backButton = new RoundedButton("Zurück zum Menü");
         backButton.addActionListener(e -> appWindow.showMenu());
         add(backButton, BorderLayout.NORTH);
 
@@ -46,7 +46,7 @@ public class ProgressPanel extends JPanel {
         countsPanel.add(zuletztFalschLabel);
         add(countsPanel, BorderLayout.CENTER);
 
-        practiceWrongButton = new JButton("Zuletzt falsche üben");
+        practiceWrongButton = new RoundedButton("Zuletzt falsche üben");
         practiceWrongButton.addActionListener(e -> {
             List<Question> wrongQuestions = progressTracker.questionsInCategory(allQuestions, Category.ZULETZT_FALSCH);
             appWindow.showFlashcardsFiltered(wrongQuestions);

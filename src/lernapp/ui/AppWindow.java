@@ -50,6 +50,7 @@ public class AppWindow extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 450);
+        setResizable(false); // verhindert ein riesiges, leeres Fenster beim Maximieren
         setLocationRelativeTo(null); // Fenster mittig auf dem Bildschirm platzieren
     }
 

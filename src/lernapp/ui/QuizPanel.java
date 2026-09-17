@@ -38,7 +38,7 @@ public class QuizPanel extends JPanel {
 
         setLayout(new BorderLayout(10, 10));
 
-        JButton backButton = new JButton("Zurück zum Menü");
+        JButton backButton = new RoundedButton("Zurück zum Menü");
         backButton.addActionListener(e -> appWindow.showMenu());
 
         scoreLabel = new JLabel("", SwingConstants.RIGHT);
@@ -94,7 +94,7 @@ public class QuizPanel extends JPanel {
 
         answersPanel.removeAll();
         for (String option : options) {
-            JButton optionButton = new JButton(option);
+            JButton optionButton = new RoundedButton(option);
             optionButton.addActionListener(e -> checkAnswer(option, q));
             answersPanel.add(optionButton);
         }
@@ -124,9 +124,9 @@ public class QuizPanel extends JPanel {
         updateScoreLabel();
 
         boolean isLastQuestion = currentIndex + 1 >= questions.size();
-        JButton nextButton = new JButton(isLastQuestion ? "Ergebnis anzeigen" : "Weiter");
+        JButton nextButton = new RoundedButton(isLastQuestion ? "Ergebnis anzeigen" : "Weiter");
         nextButton.addActionListener(e -> nextQuestion());
-        JButton searchButton = new JButton("Mehr zum Thema suchen");
+        JButton searchButton = new RoundedButton("Mehr zum Thema suchen");
         searchButton.addActionListener(e -> WebLinks.searchTopic(q.getTopic()));
         actionArea.removeAll();
         actionArea.add(nextButton);
@@ -153,7 +153,7 @@ public class QuizPanel extends JPanel {
         answersPanel.revalidate();
         answersPanel.repaint();
 
-        JButton restartButton = new JButton("Nochmal");
+        JButton restartButton = new RoundedButton("Nochmal");
         restartButton.addActionListener(e -> startQuiz());
         actionArea.removeAll();
         actionArea.add(restartButton);
