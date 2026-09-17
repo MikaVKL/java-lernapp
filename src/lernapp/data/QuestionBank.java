@@ -43,6 +43,36 @@ public class QuestionBank {
                 "char steht für 'character' und speichert genau ein Zeichen, geschrieben mit einfachen Anführungszeichen.",
                 new String[] { "String", "int", "letter" }));
 
+        questions.add(new Question("Variablen",
+                "Welcher Datentyp speichert sehr große Ganzzahlen, größer als int erlaubt?",
+                "long",
+                "long hat mehr Speicherplatz als int und kann daher deutlich größere Ganzzahlen speichern.",
+                new String[] { "double", "bigint", "short" }));
+
+        questions.add(new Question("Variablen",
+                "Welcher Datentyp speichert Kommazahlen mit einfacher (geringerer) Genauigkeit als double?",
+                "float",
+                "float braucht weniger Speicher als double, ist dafür aber ungenauer bei sehr vielen Nachkommastellen.",
+                new String[] { "single", "short", "int" }));
+
+        questions.add(new Question("Variablen",
+                "Welches Schlüsselwort macht eine Variable zu einer Konstante, die nicht mehr geändert werden kann?",
+                "final",
+                "final vor einer Variable bedeutet: der Wert wird einmal gesetzt und kann danach nicht mehr verändert werden.",
+                new String[] { "const", "static", "fixed" }));
+
+        questions.add(new Question("Variablen",
+                "Welcher Datentyp ist der kleinste Ganzzahl-Typ in Java (Werte von -128 bis 127)?",
+                "byte",
+                "byte belegt nur 8 Bit Speicher und eignet sich für sehr kleine Zahlenbereiche.",
+                new String[] { "short", "int", "char" }));
+
+        questions.add(new Question("Variablen",
+                "Welche Schreibweise ist die übliche Namenskonvention für Variablen in Java, z.B. meineZahl?",
+                "camelCase",
+                "Bei camelCase beginnt der Name klein und jedes weitere Wort startet mit einem Großbuchstaben.",
+                new String[] { "snake_case", "PascalCase", "kebab-case" }));
+
         // --- Operatoren & Typumwandlung ---
         questions.add(new Question("Operatoren",
                 "Was ist das Ergebnis von 7 % 2 in Java?",
@@ -68,6 +98,42 @@ public class QuestionBank {
                 "Beim Casting von double zu int wird der Nachkommateil einfach abgeschnitten, nicht gerundet.",
                 new String[] { "4", "3.9", "Fehler" }));
 
+        questions.add(new Question("Operatoren",
+                "Welcher Operator verknüpft zwei Bedingungen so, dass BEIDE wahr sein müssen?",
+                "&&",
+                "&& (logisches UND) ergibt nur dann true, wenn beide Seiten true sind.",
+                new String[] { "||", "!", "==" }));
+
+        questions.add(new Question("Operatoren",
+                "Welcher Operator verknüpft zwei Bedingungen so, dass MINDESTENS EINE wahr sein muss?",
+                "||",
+                "|| (logisches ODER) ergibt true, sobald mindestens eine der beiden Bedingungen true ist.",
+                new String[] { "&&", "!", "==" }));
+
+        questions.add(new Question("Operatoren",
+                "Welcher Operator kehrt einen boolean-Wert ins Gegenteil um?",
+                "!",
+                "! (logische Negation) macht aus true false und aus false true.",
+                new String[] { "~", "not", "!=" }));
+
+        questions.add(new Question("Operatoren",
+                "Welcher Operator prüft, ob zwei Werte NICHT gleich sind?",
+                "!=",
+                "!= ist das Gegenstück zu ==, es ergibt true, wenn die Werte unterschiedlich sind.",
+                new String[] { "==", "<>", "!" }));
+
+        questions.add(new Question("Operatoren",
+                "Welcher Operator erhöht eine Variable um genau 1?",
+                "++",
+                "++ ist der Inkrement-Operator, z.B. macht zahl++ aus 5 eine 6.",
+                new String[] { "+1", "+=", "->" }));
+
+        questions.add(new Question("Operatoren",
+                "Welcher Operator prüft 'kleiner oder gleich'?",
+                "<=",
+                "<= ist wahr, wenn der linke Wert kleiner als der rechte oder genau gleich groß ist.",
+                new String[] { "<", "=<", ">=" }));
+
         // --- if/else & switch ---
         questions.add(new Question("Bedingungen",
                 "Welches Schlüsselwort leitet eine Alternative zu if ein?",
@@ -86,6 +152,12 @@ public class QuestionBank {
                 "break",
                 "Ohne break würde die Ausführung in den nächsten case-Block 'durchfallen' (fall-through).",
                 new String[] { "stop", "end", "exit" }));
+
+        questions.add(new Question("Bedingungen",
+                "Wie nennt man den Operator, der eine if-else-Bedingung in einer Zeile abbildet, z.B. x > 0 ? \"positiv\" : \"negativ\"?",
+                "Ternärer Operator (?:)",
+                "Der ternäre Operator ist eine Kurzform für if-else: Bedingung ? Wert-wenn-wahr : Wert-wenn-falsch.",
+                new String[] { "Boolescher Operator", "Kurzschluss-Operator", "Bedingungsschleife" }));
 
         // --- Schleifen ---
         questions.add(new Question("Schleifen",
@@ -118,6 +190,24 @@ public class QuestionBank {
                 "continue springt direkt zur nächsten Runde der Schleife, ohne den restlichen Code im aktuellen Durchlauf auszuführen.",
                 new String[] { "break", "skip", "next" }));
 
+        questions.add(new Question("Schleifen",
+                "Wie lautet die erweiterte for-Schleife (for-each), um über ein Array 'zahlen' zu iterieren?",
+                "for (int zahl : zahlen)",
+                "Die for-each-Schleife liest jedes Element nacheinander aus, ohne dass man selbst einen Index mitzählen muss.",
+                new String[] { "for (zahlen : int zahl)", "foreach (zahlen as zahl)", "for (int zahl in zahlen)" }));
+
+        questions.add(new Question("Schleifen",
+                "Wie nennt man eine Schleife, die sich komplett innerhalb einer anderen Schleife befindet?",
+                "Verschachtelte Schleife",
+                "Bei verschachtelten Schleifen läuft die innere Schleife bei jedem einzelnen Durchlauf der äußeren komplett durch.",
+                new String[] { "Parallele Schleife", "Rekursive Schleife", "Geteilte Schleife" }));
+
+        questions.add(new Question("Schleifen",
+                "Wie nennt man eine Schleife, deren Bedingung nie falsch wird und die daher nie von selbst endet?",
+                "Endlosschleife",
+                "Eine Endlosschleife läuft für immer weiter, z.B. bei while(true) ohne ein break darin.",
+                new String[] { "Rekursionsfehler", "Bedingungsfehler", "Deadlock" }));
+
         // --- Arrays ---
         questions.add(new Question("Arrays",
                 "Wie erstellt man in Java ein int-Array mit 5 Plätzen?",
@@ -137,6 +227,18 @@ public class QuestionBank {
                 "length ist bei Arrays ein Attribut (kein Methodenaufruf, also ohne Klammern) und liefert die Anzahl der Plätze.",
                 new String[] { "zahlen.length()", "zahlen.size()", "length(zahlen)" }));
 
+        questions.add(new Question("Arrays",
+                "Wie initialisiert man ein Array direkt mit den Werten 1, 2 und 3?",
+                "int[] zahlen = {1, 2, 3};",
+                "Mit geschweiften Klammern kann man ein Array bei der Deklaration sofort mit Werten füllen.",
+                new String[] { "int[] zahlen = [1, 2, 3];", "int[] zahlen = new int(1,2,3);", "int[] zahlen = (1,2,3);" }));
+
+        questions.add(new Question("Arrays",
+                "Wie deklariert man in Java ein zweidimensionales int-Array (z.B. für ein 3x3-Feld)?",
+                "int[][] matrix = new int[3][3];",
+                "Zwei Paar eckige Klammern stehen für zwei Dimensionen, z.B. Zeilen und Spalten.",
+                new String[] { "int[2][2] matrix = new int[3][3];", "Array2D matrix = new Array2D(3,3);", "int[][] matrix = new int(3,3);" }));
+
         // --- Methoden ---
         questions.add(new Question("Methoden",
                 "Wie nennt man die Werte, die man beim Aufruf an eine Methode übergibt?",
@@ -155,6 +257,18 @@ public class QuestionBank {
                 "Sie gibt keinen Wert zurück",
                 "void bedeutet 'leer' - die Methode führt Code aus, liefert aber keinen Wert an den Aufrufer zurück.",
                 new String[] { "Sie gibt immer null zurück", "Sie gibt eine leere Zeichenkette zurück", "Sie ist fehlerhaft" }));
+
+        questions.add(new Question("Methoden",
+                "Wie nennt man es, wenn eine Klasse mehrere Methoden mit demselben Namen, aber unterschiedlichen Parametern hat?",
+                "Methodenüberladung (Overloading)",
+                "Overloading erlaubt es, denselben Methodennamen mehrfach zu verwenden, solange sich die Parameter unterscheiden.",
+                new String[] { "Overriding", "Vererbung", "Polymorphismus" }));
+
+        questions.add(new Question("Methoden",
+                "Wie nennt man es, wenn eine Methode sich selbst aufruft?",
+                "Rekursion",
+                "Bei Rekursion ruft sich eine Methode innerhalb ihres eigenen Codes selbst auf, meist mit einer Abbruchbedingung.",
+                new String[] { "Iteration", "Reflexion", "Delegation" }));
 
         // --- OOP-Grundlagen ---
         questions.add(new Question("OOP",
@@ -181,6 +295,48 @@ public class QuestionBank {
                 "new reserviert Speicher für ein neues Objekt und ruft dessen Konstruktor auf.",
                 new String[] { "create", "instance", "make" }));
 
+        questions.add(new Question("OOP",
+                "Welches Schlüsselwort nutzt man, damit eine Klasse von einer anderen erbt?",
+                "extends",
+                "Klasse B extends Klasse A bedeutet: B übernimmt alle Attribute und Methoden von A (Vererbung).",
+                new String[] { "implements", "inherits", "super" }));
+
+        questions.add(new Question("OOP",
+                "Mit welchem Schlüsselwort ruft man in einer Unterklasse den Konstruktor der Oberklasse auf?",
+                "super",
+                "super() ruft gezielt den Konstruktor (oder Methoden) der Elternklasse auf.",
+                new String[] { "this", "base", "parent" }));
+
+        questions.add(new Question("OOP",
+                "Welche Annotation kennzeichnet, dass eine Methode eine geerbte Methode überschreibt?",
+                "@Override",
+                "@Override ist kein Muss, hilft aber dem Compiler, Tippfehler beim Überschreiben zu erkennen.",
+                new String[] { "@Overwrite", "@Inherit", "@Super" }));
+
+        questions.add(new Question("OOP",
+                "Welcher Zugriffsmodifizierer erlaubt den Zugriff nur innerhalb derselben Klasse?",
+                "private",
+                "private-Felder/Methoden sind von außerhalb der Klasse nicht direkt erreichbar - deshalb nutzt man Getter/Setter.",
+                new String[] { "public", "protected", "static" }));
+
+        questions.add(new Question("OOP",
+                "Welcher Zugriffsmodifizierer erlaubt den Zugriff von überall im Programm?",
+                "public",
+                "public-Elemente sind uneingeschränkt von jeder anderen Klasse aus erreichbar.",
+                new String[] { "private", "protected", "default" }));
+
+        questions.add(new Question("OOP",
+                "Was bedeutet das Schlüsselwort static bei einer Methode oder Variable?",
+                "Sie gehört zur Klasse, nicht zu einem einzelnen Objekt",
+                "static-Elemente existieren nur einmal pro Klasse und werden ohne ein konkretes Objekt aufgerufen, z.B. Klasse.methode().",
+                new String[] { "Sie kann nicht mehr verändert werden", "Sie ist automatisch privat", "Sie wird nur einmal ausgeführt" }));
+
+        questions.add(new Question("OOP",
+                "Wofür wird das Schlüsselwort this innerhalb einer Klasse genutzt?",
+                "Um auf das aktuelle Objekt zu verweisen",
+                "this verweist auf das Objekt, in dessen Methode man sich gerade befindet - nützlich z.B. bei gleichnamigen Parametern.",
+                new String[] { "Um eine neue Instanz zu erstellen", "Um eine Oberklasse aufzurufen", "Um eine Methode zu beenden" }));
+
         // --- Grundsyntax ---
         questions.add(new Question("Grundsyntax",
                 "Womit leitet man in Java einen einzeiligen Kommentar ein?",
@@ -193,6 +349,82 @@ public class QuestionBank {
                 "Semikolon (;)",
                 "Das Semikolon markiert in Java das Ende einer Anweisung - vergisst man es, gibt es einen Compilerfehler.",
                 new String[] { "Doppelpunkt (:)", "Punkt (.)", "Komma (,)" }));
+
+        // --- Strings ---
+        questions.add(new Question("Strings",
+                "Wie vergleicht man in Java den INHALT zweier Strings korrekt?",
+                "text1.equals(text2)",
+                "== vergleicht bei Objekten (wie String) nur, ob es dieselbe Speicherstelle ist - für den Inhalt braucht man equals().",
+                new String[] { "text1 == text2", "text1 = text2", "text1.compare(text2)" }));
+
+        questions.add(new Question("Strings",
+                "Wie ermittelt man die Länge eines Strings namens text?",
+                "text.length()",
+                "Bei String ist length() eine Methode (mit Klammern) - im Unterschied zu length bei Arrays.",
+                new String[] { "text.length", "text.size()", "length(text)" }));
+
+        questions.add(new Question("Strings",
+                "Was macht text.substring(0, 3) bei einem String?",
+                "Gibt die ersten 3 Zeichen des Strings zurück",
+                "substring(start, ende) liefert den Teiltext ab Index 'start' bis (ausschließlich) Index 'ende'.",
+                new String[] { "Löscht die ersten 3 Zeichen", "Gibt die letzten 3 Zeichen zurück", "Zählt die Zeichen im String" }));
+
+        questions.add(new Question("Strings",
+                "Welche Methode wandelt einen String komplett in Großbuchstaben um?",
+                "toUpperCase()",
+                "toUpperCase() gibt eine neue Version des Strings zurück, bei der alle Buchstaben groß geschrieben sind.",
+                new String[] { "toCaps()", "upperCase()", "makeUpper()" }));
+
+        questions.add(new Question("Strings",
+                "Wie verbindet man in Java zwei Strings zu einem?",
+                "Mit dem + Operator",
+                "z.B. \"Hallo \" + \"Welt\" ergibt \"Hallo Welt\" - der + Operator verkettet Strings.",
+                new String[] { "Mit dem & Operator", "Mit .merge()", "Mit dem . Operator" }));
+
+        // --- Exceptions ---
+        questions.add(new Question("Exceptions",
+                "Womit fängt man in Java einen Laufzeitfehler ab, um den Programmabbruch zu verhindern?",
+                "try/catch",
+                "Riskanter Code steht im try-Block, im catch-Block steht, was bei einem Fehler stattdessen passieren soll.",
+                new String[] { "if/else", "switch/case", "do/while" }));
+
+        questions.add(new Question("Exceptions",
+                "Wie nennt man in Java einen Fehler, der erst zur Laufzeit auftritt, z.B. eine Division durch 0?",
+                "Exception",
+                "Eine Exception ('Ausnahme') ist ein Laufzeitfehler-Objekt, das man mit try/catch behandeln kann.",
+                new String[] { "Warning", "Bug", "Error-Code" }));
+
+        // --- Collections ---
+        questions.add(new Question("Collections",
+                "Was ist der Hauptunterschied zwischen einem Array und einer ArrayList?",
+                "Eine ArrayList kann ihre Größe dynamisch ändern, ein Array hat eine feste Größe",
+                "Bei einem Array muss die Größe von Anfang an feststehen, eine ArrayList wächst und schrumpft automatisch.",
+                new String[] { "Ein Array kann Text speichern, eine ArrayList nicht", "Eine ArrayList ist immer schneller", "Es gibt keinen Unterschied" }));
+
+        questions.add(new Question("Collections",
+                "Wie fügt man einer ArrayList namens liste ein neues Element hinzu?",
+                "liste.add(element)",
+                "add() ist die Standardmethode, um ein Element am Ende einer ArrayList einzufügen.",
+                new String[] { "liste.push(element)", "liste.insert(element)", "liste + element" }));
+
+        questions.add(new Question("Collections",
+                "Wie liest man das Element an Index 0 einer ArrayList namens liste aus?",
+                "liste.get(0)",
+                "Im Gegensatz zum Array (zahlen[0]) nutzt man bei ArrayList die Methode get(index).",
+                new String[] { "liste[0]", "liste.at(0)", "liste.getIndex(0)" }));
+
+        // --- Ein-/Ausgabe ---
+        questions.add(new Question("Ein-/Ausgabe",
+                "Was ist der Unterschied zwischen System.out.println() und System.out.print()?",
+                "println fügt am Ende automatisch einen Zeilenumbruch hinzu, print nicht",
+                "Nach println() startet die nächste Ausgabe in einer neuen Zeile, nach print() direkt dahinter.",
+                new String[] { "print ist schneller", "println kann keine Zahlen ausgeben", "Es gibt keinen Unterschied" }));
+
+        questions.add(new Question("Ein-/Ausgabe",
+                "Welche Klasse nutzt man typischerweise, um Tastatur-Eingaben des Nutzers einzulesen?",
+                "Scanner",
+                "Scanner (aus java.util) liest z.B. mit nextInt() oder nextLine() Eingaben von der Konsole ein.",
+                new String[] { "Reader", "InputBox", "Keyboard" }));
 
         return questions;
     }

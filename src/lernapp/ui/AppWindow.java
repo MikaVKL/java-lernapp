@@ -29,7 +29,7 @@ public class AppWindow extends JFrame {
         cardContainer.setLayout(cardLayout);
 
         this.flashcardPanel = new FlashcardPanel(this, questionBank.getAllQuestions());
-        this.quizPanel = new QuizPanel();
+        this.quizPanel = new QuizPanel(this, questionBank.getAllQuestions());
 
         cardContainer.add(new MainMenuPanel(this), CARD_MENU);
         cardContainer.add(flashcardPanel, CARD_FLASHCARDS);
@@ -50,6 +50,7 @@ public class AppWindow extends JFrame {
     }
 
     public void showQuiz() {
+        quizPanel.startQuiz();
         cardLayout.show(cardContainer, CARD_QUIZ);
     }
 }
